@@ -3,7 +3,7 @@ node ("jenkins-slave")
  stage("SCM Checkout")
  { 
   checkout scm
-  mvnHome = tool 'M3'
+  mvnHome = tool '/opt/apache-maven-3.9.4/'
   }
 
     stage('Build') {
