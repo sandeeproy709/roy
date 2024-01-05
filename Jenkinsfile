@@ -2,23 +2,23 @@ node ("jenkins-slave")
 { 
  stage("SCM Checkout")
  { 
-   checkout scm
-   mvnHome = tool 'M3'
+  checkout scm
+  mvnHome = tool 'M3'
   }
 
-    stage('Build' ) {
+    stage('Build') {
          // Run the maven build
-        if (isUnix)) {
-            sh "'$(mvnHome)/bin/mvn* -Dmaven.test.failure.ignore clean package"
+        if (isUnix()) {
+            sh "'$(mvnHome)/bin/mvn' -Dmaven.test.failure.ignore clean package"
         } else {
             bat (/"${mvnHome} \bin\mvn" -Dmaven.test.failure.ignore clean package/)
         }
     }
     stage('Results) {
-          archive target/".war"
+          archive 'target/*.war'
     } 
     stage('deploy') {
-      sh *cp -p **/*.war /opt/tomcat /webapps*
+      sh "cp -p **/*.war /opt/tomcat/webapps"
       }
       
-      }  
+   }  
