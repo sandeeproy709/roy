@@ -18,7 +18,7 @@ node("jenkins-slave")
           archive 'target/*.war'
     } 
     stage('deploy') {
-      sh "cp -p **/*.war /opt/apache-maven-3.9.4"
+      sh "cp -p **/*.war /opt/tomcat/webapps"
       }
       
    }  
